@@ -1,0 +1,41 @@
+#访问端口
+server:
+  port: 18081
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: admin
+    #useUnicode=true&characterEncoding=utf8 : 设置编码方式
+    #autoReconnect=true 如果连接失败重新连接
+    #allowMultiQueries=true 1.可以在sql语句后携带分号，实现多语句执行。 2.可以执行批处理，同时发出多个SQL语句。
+    #useSSL=false MySQL在高版本需要指明是否进行SSL连接
+    url: jdbc:mysql://localhost:3306/itcast_tanhua?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+  data:
+    mongodb:
+      uri: mongodb://10.10.20.160/tanhua
+#dubbo配置
+dubbo:
+  application:
+    name: tanhua-dubbo-service
+  registry:
+    address: zookeeper://10.10.20.160:2181
+  scan:
+    base-packages: com.tanhua.dubbo.api
+  provider:
+    timeout: 600000
+#Mybatis plus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tb_
+      id-type: auto
+#log日志
+logging:
+  level:
+    root: info
+    com:
+      tanhua: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %msg - %logger{15}%n\'

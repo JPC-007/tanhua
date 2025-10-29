@@ -1,0 +1,72 @@
+server:
+  port: 18083
+
+#配置redis
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tanhua-manager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: root
+    password: admin
+  redis:
+    host: 10.10.20.160
+    port: 6379
+dubbo:
+  application:
+    name: tanhua-manage
+  registry:
+    address: zookeeper://10.10.20.160:2181
+  consumer:
+    check: false
+#配置短信平台信息
+tanhua:
+  secret: eyJtb2JpbGUiOiIxMjM0NTc4OSIsImlkIjoiMiJ9
+  #替换成自己的 oss存储信息
+  sms:
+    signName: 传智播客
+    parameterName: code
+    validateCodeTemplateCode: SMS_204761533
+    accessKeyId: LTAI5tPQf9qCNmTUwtAm2zzc
+    accessKeySecret: droBhjw5v0Go2FxSS3bk2dCNP5lsnF
+  oss:
+    endpoint: http://oss-cn-shenzhen.aliyuncs.com
+    bucketName: mytanhua113
+    url: https://mytanhua113.oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI5tPQf9qCNmTUwtAm2zzc
+    accessKeySecret: droBhjw5v0Go2FxSS3bk2dCNP5lsnF
+  face:
+    appId: 24447715
+    apiKey: PLuQZEvOD6dmny7WZrGZMNcz
+    secretKey: gsqWgxxULsaMwOldrxXozTGWs8T7C0PK
+  huanxin:
+    url: http://a1.easemob.com/
+    orgName: 1112190901181842
+    appName: mytanhua113
+    clientId: YXA6ePunD1eJSyOAvZtLHnsJCw
+    clientSecret: YXA67CcwUiVdLwH5UBD-CKkBmfLC6zg
+  huawei:
+    username: hw23848243
+    password: aaqq!!
+    project: cn-east-3
+    domain: hw23848243
+    # 图片检测内容 politics：是否涉及政治人物的检测，terrorism：是否包含涉政暴恐元素的检测，porn：是否包含涉黄内容元素的检测，ad：是否包含广告的检测（公测特性），all：包含politics、terrorism和porn三种场景的检测
+    categoriesImage: politics,terrorism,porn
+    # 文字检测内容 politics：涉政，porn：涉黄，ad：广告，abuse：辱骂，contraband：违禁品，flood：灌水
+    categoriesText: politics,porn,ad,abuse,contraband,flood
+    textApiUrl: https://moderation.cn-east-3.myhuaweicloud.com/v1.0/moderation/text
+    imageApiUrl: https://moderation.cn-east-3.myhuaweicloud.com/v1.0/moderation/image/batch
+#mybaits-plus
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tb_    #数据库表前缀
+      id-type: auto        #数据库表主键的策略
+rocketmq:
+  name-server: 10.10.20.160:9876
+logging:
+  level:
+    root: info
+    com:
+      tanhua: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %msg - %logger{15}%n\'

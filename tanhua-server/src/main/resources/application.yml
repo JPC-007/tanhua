@@ -1,0 +1,68 @@
+server:
+  port: 10880
+dubbo:
+  application:
+    name: tanhua-server
+  registry:
+    address: zookeeper://10.10.20.160:2181
+  consumer:
+    check: false
+# log
+logging:
+  level:
+    root: info
+    com:
+      tanhua: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %msg - %logger{15}%n\'
+spring:
+  redis:
+    host: 10.10.20.160
+    port: 6379
+  servlet:
+    multipart:
+      max-file-size: 10MB
+tanhua:
+  tokenKey: TOKEN_
+  secret: eyJtb2JpbGUiOiIxMjM0NTc4OSIsImlkIjoiMiJ9
+  redisValidateCodeKeyPrefix: VALIDATECODE_
+  sms:
+    signName: 传智播客
+    parameterName: code
+    validateCodeTemplateCode: SMS_204761533
+    accessKeyId: LTAI5tPQf9qCNmTUwtAm2zzc
+    accessKeySecret: droBhjw5v0Go2FxSS3bk2dCNP5lsnF
+  oss:
+    endpoint: http://oss-cn-shenzhen.aliyuncs.com
+    bucketName: mytanhua113
+    url: https://mytanhua113.oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI5tPQf9qCNmTUwtAm2zzc
+    accessKeySecret: droBhjw5v0Go2FxSS3bk2dCNP5lsnF
+  face:
+    appId: 24447715
+    apiKey: PLuQZEvOD6dmny7WZrGZMNcz
+    secretKey: gsqWgxxULsaMwOldrxXozTGWs8T7C0PK
+  huanxin:
+    url: http://a1.easemob.com/
+    orgName: 1112190901181842
+    appName: mytanhua113
+    clientId: YXA6ePunD1eJSyOAvZtLHnsJCw
+    clientSecret: YXA67CcwUiVdLwH5UBD-CKkBmfLC6zg
+# ===================================================================
+# 分布式文件系统FDFS配置
+# ===================================================================
+fdfs:
+  so-timeout: 1500
+  connect-timeout: 600
+  #缩略图生成参数
+  thumb-image:
+    width: 150
+    height: 150
+  #TrackerList参数,支持多个
+  tracker-list: 10.10.20.160:22122
+  web-server-url: http://10.10.20.160:8888/
+rocketmq:
+  name-server: 10.10.20.160:9876
+  producer:
+    group: tanhua
+    sendMessageTimeout: 60000
