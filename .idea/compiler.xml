@@ -7,19 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tanhua-commons" />
-        <module name="tanhua-manage" />
+        <module name="tanhua-domain" />
         <module name="tanhua-dubbo-interface" />
-        <module name="tanhua-dubbo" />
         <module name="tanhua-dubbo-service" />
         <module name="tanhua-server" />
-        <module name="tanhua-domain" />
+        <module name="tanhua-commons" />
+        <module name="tanhua-manage" />
+        <module name="tanhua-dubbo" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="tanhua" options="" />
+      <module name="tanhua" options="-parameters" />
       <module name="tanhua-commons" options="-parameters" />
       <module name="tanhua-domain" options="-parameters" />
       <module name="tanhua-dubbo" options="-parameters" />
