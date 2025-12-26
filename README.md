@@ -1,5 +1,7 @@
 # 探花交友（Tanhua）
 
+[English](./README_EN.md) | 中文
+
 > 基于 Spring Boot + Dubbo 的分布式社交交友平台后端系统
 
 ## 项目简介
